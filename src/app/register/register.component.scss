@@ -1,0 +1,41 @@
+form {
+    width: 1200px;
+    height: 750px;
+    margin: 30px auto;
+    padding: 15px 30px;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.checks {
+    width: 400px;
+    height: 25px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 50px;
+}
+
+.p1, .p2, .p3, .p4, .p5, .p6 {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.g1, .g2 {
+    margin-top: 15px;
+}
+
+.b1 {
+    display: flex;
+    width: 1140px;
+    height: 35px;
+    justify-content: space-between;
+}
+
+label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
