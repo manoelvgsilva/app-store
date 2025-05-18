@@ -9,8 +9,6 @@ export class UserService {
   private userApi = 'http://localhost:8181/users';
   private mapApi = 'http://localhost:1010/code';
 
-
-
   constructor(private http: HttpClient) { }
 
   createUser(userData: any): Observable<any> {
@@ -23,6 +21,10 @@ export class UserService {
 
   getCitiesByState(state: string): Observable<string[]> {
     return this.http.get<string[]>(`${this.mapApi}/cities/${state}`);
+  }
+
+  getAddressByCode(cep: string): Observable<any> {
+    return this.http.get<any>(`${this.mapApi}/cep/${cep}`);
   }
 
   upAddress(addressData: any): Observable<any> {

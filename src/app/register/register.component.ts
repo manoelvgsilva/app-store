@@ -45,6 +45,31 @@ export class RegisterComponent {
         this.cities = [];
       }
     });
+
+    this.form.get('cep')?.valueChanges.subscribe((cep) => {
+      if (cep && cep.length === 8) {
+        this.getAddressByCep(cep);
+      }
+    });
+  }
+
+  getAddressByCep(cep: string) {
+    this.userService.getAddressByCode(cep).subscribe({
+      next: (address) => {
+        this.form.patchValue({
+          address: address.publicLoc,
+          complement: address.complement,
+          bairro: address.neighborhood,
+          state: address.fu,
+          number: '',
+          city: address.location
+        });
+        this.getCitiesByState(address.fu);
+      },
+      error: (err) => {
+        console.error('Erro ao buscar endereço pelo CEP:', err);
+      }
+    });
   }
 
   getCitiesByState(state: string) {
